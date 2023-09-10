@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
 
     private Camera mainCamera;
     private bool hasStarted = false;
+    [SerializeField] private float yOffset = 0.3f;
 
 
     void Start()
@@ -43,7 +44,8 @@ public class PlayerInput : MonoBehaviour
                 // convert the touch position to world position
                 var touchPos = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
 
-                player.transform.position = new Vector3(touchPos.x, touchPos.y, 0);
+                player.transform.position = new Vector3(touchPos.x, touchPos.y + yOffset, 0);
+                player.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
     }
