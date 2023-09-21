@@ -4,17 +4,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
-{ 
+{
     public GameObject player;
 
     private Camera mainCamera;
     private bool hasStarted = false;
+    private Rigidbody2D handRigidbody;
     [SerializeField] private float yOffset = 0.3f;
+    [SerializeField] private float moveSpeed = 10f;
+
+    // TODO : add wall colliders to stop hand and jelly going off screen, add reset trigger when jelly falls off screen
 
 
     void Start()
     {
         mainCamera = Camera.main;
+        handRigidbody = player.GetComponent<Rigidbody2D>();
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
@@ -26,7 +31,7 @@ public class PlayerInput : MonoBehaviour
         GameEventSystem.Instance.FinishGameEvent.RemoveListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.RemoveListener(OnResetGame);
     }
-    
+
     void Update()
     {
         if (Input.touchCount > 0)
@@ -39,14 +44,27 @@ public class PlayerInput : MonoBehaviour
                 GameEventSystem.Instance.StartGameEvent.Invoke();
             }
 
-            if(hasStarted == true)
+            if (hasStarted == true)
             {
-                // convert the touch position to world position
                 var touchPos = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
+                var desiredPos = new Vector3(touchPos.x, touchPos.y + yOffset, touchPos.z);
 
-                player.transform.position = new Vector3(touchPos.x, touchPos.y + yOffset, 0);
-                player.transform.rotation = Quaternion.Euler(0, 0, 0);
+                Vector2 movedirection = (desiredPos - player.transform.position).normalized;
+
+                handRigidbody.velocity = new Vector2(movedirection.x * moveSpeed, movedirection.y * moveSpeed);
+                handRigidbody.angularVelocity = 0f;
+
+            } 
+            else
+            {
+                handRigidbody.velocity = Vector2.zero;
+                handRigidbody.angularVelocity = 0f;
             }
+        }
+        else
+        { // if removed then hand keeps moving, could lerp to 0?
+            handRigidbody.velocity = Vector2.zero;
+            handRigidbody.angularVelocity = 0f;
         }
     }
 
