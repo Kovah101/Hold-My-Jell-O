@@ -71,18 +71,21 @@ public class PlayerInput : MonoBehaviour
     private void OnStartGame()
     {
         //activate rigidbody and hide starting ui
+        Debug.Log("Game Started");
         hasStarted = true;
     }
 
     private void OnFinishGame()
     {
         //show high score and ui
+        Debug.Log("Game Finished");
         hasStarted = false;
     }
 
     private void OnResetGame()
     {
         // resetplayer position and all UI
+        Debug.Log("Game Reset");
         hasStarted = false;
     }
 }
