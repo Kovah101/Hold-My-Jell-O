@@ -11,7 +11,7 @@ public class JellyController : MonoBehaviour
 
     void Start()
     {
-        jellyCenter = GameObject.Find("JellyCenter");
+        jellyCenter = gameObject.transform.GetChild(0).gameObject;
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         
@@ -35,7 +35,12 @@ public class JellyController : MonoBehaviour
     private void OnStartGame()
     {
         Debug.Log("JellyController: OnStartGame");
-        // wake up all rigidbody bones
+        int jellyBoneCount = gameObject.transform.childCount;
+        for (int i = 0; i < jellyBoneCount; i++)
+        {
+            Rigidbody2D jellyBoneBody = gameObject.transform.GetChild(i).gameObject.GetComponent<Rigidbody2D>();
+            jellyBoneBody.WakeUp();
+        }
     }
 
     private void OnFinishGame()

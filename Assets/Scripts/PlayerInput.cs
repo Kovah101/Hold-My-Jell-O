@@ -92,6 +92,17 @@ public class PlayerInput : MonoBehaviour
         Debug.Log("Game Reset");
         hasStarted = false;
         player.transform.position = playerStartPosition;
-        Instantiate(jelly, jellyStartPosition, Quaternion.identity);
+        createJelly();
+    }
+
+    private void createJelly()
+    {
+        GameObject jellyClone = Instantiate(jelly, jellyStartPosition, Quaternion.identity);
+        int jellyBoneCount = jellyClone.transform.childCount;
+        for (int i = 0; i < jellyBoneCount; i++)
+        {
+            Rigidbody2D jellyBoneBody = jellyClone.transform.GetChild(i).gameObject.GetComponent<Rigidbody2D>();
+            jellyBoneBody.Sleep();
+        }
     }
 }
