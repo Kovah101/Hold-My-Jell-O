@@ -6,9 +6,12 @@ public class JellyController : MonoBehaviour
 {
     public float deadZone = -7.5f;
 
+    private GameObject jellyCenter;
+
 
     void Start()
     {
+        jellyCenter = GameObject.Find("JellyCenter");
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         
@@ -23,7 +26,7 @@ public class JellyController : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.y < deadZone)
+        if(jellyCenter.transform.position.y < deadZone)
         {
             GameEventSystem.Instance.FinishGameEvent.Invoke();
         }

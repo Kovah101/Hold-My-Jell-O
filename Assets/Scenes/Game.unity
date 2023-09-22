@@ -1504,8 +1504,8 @@ GameObject:
   - component: {fileID: 1420935155}
   - component: {fileID: 1420935154}
   m_Layer: 0
-  m_Name: bone_24
-  m_TagString: Untagged
+  m_Name: JellyCenter
+  m_TagString: JellyCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,7 +1667,7 @@ Transform:
   m_GameObject: {fileID: 1453704884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2591,7 +2591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1453704884}
-  jelly: {fileID: 0}
+  jelly: {fileID: 756667902}
   yOffset: 0.4
   moveSpeed: 50
 --- !u!4 &2032447628
