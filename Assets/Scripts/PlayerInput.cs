@@ -6,12 +6,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public GameObject player;
+    public GameObject jelly;
 
     private Camera mainCamera;
     private bool hasStarted = false;
     private Rigidbody2D handRigidbody;
     [SerializeField] private float yOffset = 0.3f;
     [SerializeField] private float moveSpeed = 10f;
+    private Vector3 playerStartPosition = new Vector3(0.1f, -1f, 0f);
+    private Vector3 jellyStartPosition = new Vector3(0f, 1f, 0f);
 
     // TODO : add wall colliders to stop hand and jelly going off screen, add reset trigger when jelly falls off screen
 
@@ -79,7 +82,8 @@ public class PlayerInput : MonoBehaviour
     {
         //show high score and ui
         Debug.Log("Game Finished");
-        hasStarted = false;
+        //hasStarted = false;
+        GameEventSystem.Instance.ResetGameEvent.Invoke();
     }
 
     private void OnResetGame()
@@ -87,5 +91,7 @@ public class PlayerInput : MonoBehaviour
         // resetplayer position and all UI
         Debug.Log("Game Reset");
         hasStarted = false;
+        player.transform.position = playerStartPosition;
+        Instantiate(jelly, jellyStartPosition, Quaternion.identity);
     }
 }

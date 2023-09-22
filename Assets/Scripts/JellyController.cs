@@ -10,17 +10,17 @@ public class JellyController : MonoBehaviour
     void Start()
     {
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
-
+        GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         
     }
 
     private void OnDisable()
     {
         GameEventSystem.Instance.StartGameEvent.RemoveListener(OnStartGame);
+        GameEventSystem.Instance.FinishGameEvent.RemoveListener(OnFinishGame);
     }
     
 
-    // Update is called once per frame
     void Update()
     {
         if(transform.position.y < deadZone)
@@ -32,5 +32,11 @@ public class JellyController : MonoBehaviour
     private void OnStartGame()
     {
         Debug.Log("JellyController: OnStartGame");
+        // wake up all rigidbody bones
+    }
+
+    private void OnFinishGame()
+    {
+        Destroy(gameObject);
     }
 }

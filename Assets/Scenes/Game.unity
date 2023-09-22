@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 756667905}
   - component: {fileID: 756667904}
   - component: {fileID: 756667903}
+  - component: {fileID: 756667906}
   m_Layer: 0
   m_Name: Jell-O
   m_TagString: Untagged
@@ -995,6 +996,19 @@ Transform:
   - {fileID: 1420935153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &756667906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756667902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21dd2245a9d2e1f488ed87c21aa3292c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZone: -7.5
 --- !u!1 &974013651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,6 +2591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1453704884}
+  jelly: {fileID: 0}
   yOffset: 0.4
   moveSpeed: 50
 --- !u!4 &2032447628
