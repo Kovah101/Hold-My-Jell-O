@@ -16,7 +16,8 @@ public class PlayerInput : MonoBehaviour
     private Vector3 playerStartPosition = new Vector3(0.1f, -1f, 0f);
     private Vector3 jellyStartPosition = new Vector3(0f, 1f, 0f);
 
-    // TODO : add wall colliders to stop hand and jelly going off screen, add reset trigger when jelly falls off screen
+    // TODO : Add enemy hand prefabs, move them along the screen, add collision with triggers - if touching the jelly then finish game, destroy hands and reset
+    // TODO : add enemy hand spawn patterns and increasing difficulty timers
 
 
     void Start()
@@ -73,7 +74,7 @@ public class PlayerInput : MonoBehaviour
 
     private void OnStartGame()
     {
-        //activate rigidbody and hide starting ui
+        // hide starting ui
         Debug.Log("Game Started");
         hasStarted = true;
     }
@@ -82,7 +83,6 @@ public class PlayerInput : MonoBehaviour
     {
         //show high score and ui
         Debug.Log("Game Finished");
-        //hasStarted = false;
         GameEventSystem.Instance.ResetGameEvent.Invoke();
     }
 
