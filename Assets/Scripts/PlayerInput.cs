@@ -6,14 +6,18 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public GameObject player;
+    public GameObject jelly;
 
     private Camera mainCamera;
     private bool hasStarted = false;
     private Rigidbody2D handRigidbody;
     [SerializeField] private float yOffset = 0.3f;
     [SerializeField] private float moveSpeed = 10f;
+    private Vector3 playerStartPosition = new Vector3(0.1f, -1f, 0f);
+    private Vector3 jellyStartPosition = new Vector3(0f, 1f, 0f);
 
-    // TODO : add wall colliders to stop hand and jelly going off screen, add reset trigger when jelly falls off screen
+    // TODO : Add enemy hand prefabs, move them along the screen, add collision with triggers - if touching the jelly then finish game, destroy hands and reset
+    // TODO : add enemy hand spawn patterns and increasing difficulty timers
 
 
     void Start()
@@ -70,19 +74,35 @@ public class PlayerInput : MonoBehaviour
 
     private void OnStartGame()
     {
-        //activate rigidbody and hide starting ui
+        // hide starting ui
+        Debug.Log("Game Started");
         hasStarted = true;
     }
 
     private void OnFinishGame()
     {
         //show high score and ui
-        hasStarted = false;
+        Debug.Log("Game Finished");
+        GameEventSystem.Instance.ResetGameEvent.Invoke();
     }
 
     private void OnResetGame()
     {
         // resetplayer position and all UI
+        Debug.Log("Game Reset");
         hasStarted = false;
+        player.transform.position = playerStartPosition;
+        createJelly();
+    }
+
+    private void createJelly()
+    {
+        GameObject jellyClone = Instantiate(jelly, jellyStartPosition, Quaternion.identity);
+        int jellyBoneCount = jellyClone.transform.childCount;
+        for (int i = 0; i < jellyBoneCount; i++)
+        {
+            Rigidbody2D jellyBoneBody = jellyClone.transform.GetChild(i).gameObject.GetComponent<Rigidbody2D>();
+            jellyBoneBody.Sleep();
+        }
     }
 }
