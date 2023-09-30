@@ -189,5 +189,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94331b68c7e3837418198f14fb632fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMoveSpeed: 2
+  startingMoveSpeed: 0.8
   deadZone: -6.5

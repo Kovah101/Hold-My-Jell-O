@@ -6,6 +6,10 @@ public class EnemySpawnController : MonoBehaviour
 {
     public GameObject[] enemyHands;
     public float spawnRate = 2.5f;
+    public float maxLeftPosition = -5.0f;
+    public float maxRightPosition = 2.8f;
+    public float minLeftPosition = -1.25f;
+    public float minRightPosition = 1.25f;
 
     private bool started = false;
     private float timer = 0f;
@@ -43,16 +47,30 @@ public class EnemySpawnController : MonoBehaviour
     {
         int randomIndex = Random.Range(0, enemyHands.Length);
 
-        // add random flipping of the hand in the x axis
+        Vector3 newHandPosition = gameObject.transform.position;
+
+
+
+
+
+        GameObject newHand = Instantiate(enemyHands[randomIndex], transform.position, Quaternion.identity);
+        
         int randomFlip = Random.Range(0, 2);
+
         if (randomFlip == 1)
         {
-            enemyHands[randomIndex].transform.localScale = new Vector3(-1f, 1f, 1f);
+            Debug.Log("Flipping hand");
+            Vector3 newScale = newHand.transform.localScale;
+            newScale.x *= -1;
+            newHand.transform.localScale = newScale;
+            newHand.transform.position = new Vector3(maxRightPosition, transform.position.y, 0);
+        }
+        else
+        {
+            Debug.Log("Not flipping hand");
+            newHand.transform.position = new Vector3(maxLeftPosition, transform.position.y, 0);
         }
 
-
-
-        Instantiate(enemyHands[randomIndex], transform.position, Quaternion.identity);
     }
 
     private void OnStartGame()

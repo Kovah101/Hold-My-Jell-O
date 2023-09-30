@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHandController : MonoBehaviour
 {
-    public float startingMoveSpeed = 2f;
+    public float startingMoveSpeed = 3.5f;
 
    // private bool started = false;
     private bool finished = false;
