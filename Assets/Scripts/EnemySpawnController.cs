@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawnController : MonoBehaviour
 {
     public GameObject[] enemyHands;
-    public float spawnRate = 2.5f;
-    public float maxLeftPosition = -5.0f;
-    public float maxRightPosition = 2.8f;
-    public float minLeftPosition = -1.25f;
-    public float minRightPosition = 1.25f;
+    public float spawnRate = 7f;
+    public float maxLeftPosition = -2.85f;
+    public float maxRightPosition = 2.85f;
+    public float minLeftPosition = -1.12f;
+    public float minRightPosition = 1.12f;
 
     private bool started = false;
     private float timer = 0f;
 
-    // Start is called before the first frame update
     void Start()
     {
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
@@ -38,37 +38,49 @@ public class EnemySpawnController : MonoBehaviour
         }
         else if ( started == true )
         {
-            SpawnHand();
+            SpawnHand(first: false);
             timer = 0f;
         }
     }
 
-    private void SpawnHand()
+    private void SpawnHand(bool first)
     {
         int randomIndex = Random.Range(0, enemyHands.Length);
 
-        Vector3 newHandPosition = gameObject.transform.position;
-
-
-
-
-
         GameObject newHand = Instantiate(enemyHands[randomIndex], transform.position, Quaternion.identity);
         
-        int randomFlip = Random.Range(0, 2);
+        int randomFlip = Random.Range(0, 3);
+        float xPosition;
 
         if (randomFlip == 1)
         {
-            Debug.Log("Flipping hand");
             Vector3 newScale = newHand.transform.localScale;
             newScale.x *= -1;
             newHand.transform.localScale = newScale;
-            newHand.transform.position = new Vector3(maxRightPosition, transform.position.y, 0);
+
+            if(first)
+            {
+                xPosition = minLeftPosition;
+            } 
+            else
+            {
+                xPosition = Random.Range(minLeftPosition, maxLeftPosition);
+            }
+
+            newHand.transform.position = new Vector3(xPosition, transform.position.y, 0);
         }
         else
         {
-            Debug.Log("Not flipping hand");
-            newHand.transform.position = new Vector3(maxLeftPosition, transform.position.y, 0);
+            if(first)
+            {
+                xPosition = minRightPosition;
+            }
+            else
+            {
+                xPosition = Random.Range(minRightPosition, maxRightPosition);
+            }
+
+            newHand.transform.position = new Vector3(xPosition, transform.position.y, 0);
         }
 
     }
@@ -76,12 +88,12 @@ public class EnemySpawnController : MonoBehaviour
     private void OnStartGame()
     {
         started = true;
-        SpawnHand();
+        SpawnHand(first: true);
     }
 
     private void OnFinishGame()
     {
-
+        started = false;
     }
 
     private void OnResetGame()

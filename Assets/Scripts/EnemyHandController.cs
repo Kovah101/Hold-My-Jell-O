@@ -42,7 +42,7 @@ public class EnemyHandController : MonoBehaviour
     {
         if (collision.tag == "Jelly")
         {
-           // GameEventSystem.Instance.FinishGameEvent.Invoke();
+            GameEventSystem.Instance.FinishGameEvent.Invoke();
         }
     }
 

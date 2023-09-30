@@ -412,7 +412,11 @@ MonoBehaviour:
   - {fileID: 1559880081907112243, guid: d1358e8f94f3c3e4a913cd8566281dee, type: 3}
   - {fileID: 7756636837403866226, guid: 2216319f9fae5584393748e134480c01, type: 3}
   - {fileID: 5378989858590302012, guid: 82b27bd3ab336cf4bb47744b5880ebf0, type: 3}
-  spawnRate: 2.5
+  spawnRate: 5
+  maxLeftPosition: -2.85
+  maxRightPosition: 2.85
+  minLeftPosition: -1.12
+  minRightPosition: 1.12
 --- !u!4 &1443523161
 Transform:
   m_ObjectHideFlags: 0
