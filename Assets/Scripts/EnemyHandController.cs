@@ -6,7 +6,7 @@ public class EnemyHandController : MonoBehaviour
 {
     public float startingMoveSpeed = 2f;
 
-    private bool started = false;
+   // private bool started = false;
     private bool finished = false;
     public float deadZone = -6.5f;
 
@@ -27,7 +27,7 @@ public class EnemyHandController : MonoBehaviour
 
     void Update()
     {
-       if (finished == false && started == true)
+       if (finished == false)
         {
             transform.position += Vector3.down * startingMoveSpeed * Time.deltaTime;
         }
@@ -42,13 +42,13 @@ public class EnemyHandController : MonoBehaviour
     {
         if (collision.tag == "Jelly")
         {
-            GameEventSystem.Instance.FinishGameEvent.Invoke();
+           // GameEventSystem.Instance.FinishGameEvent.Invoke();
         }
     }
 
     private void OnStartGame()
     {
-        started = true;
+       // started = true;
     }
 
     private void OnFinishGame()
@@ -59,7 +59,7 @@ public class EnemyHandController : MonoBehaviour
     private void OnResetGame()
     {
         Destroy(gameObject);
-        started = false;
+       // started = false;
         finished = false;
     }
 
