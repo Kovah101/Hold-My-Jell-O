@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1443523161}
   - component: {fileID: 1443523160}
   m_Layer: 0
-  m_Name: EnemyHandSpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
