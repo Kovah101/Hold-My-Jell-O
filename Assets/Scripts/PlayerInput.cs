@@ -37,7 +37,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     void Update()
-    {
+    { // TODO: add flip player hand if screen is double tapped
         if (Input.touchCount > 0)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.touches[0].position);

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyHandController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float startingMoveSpeed = 2f;
 
+    private bool started = false;
     private bool finished = false;
-    public float deadZone = -7.5f;
+    public float deadZone = -6.5f;
 
     void Start()
     {
+        GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
 
@@ -18,15 +20,16 @@ public class EnemyHandController : MonoBehaviour
 
     private void OnDisable()
     {
+        GameEventSystem.Instance.StartGameEvent.RemoveListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.RemoveListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.RemoveListener(OnResetGame);
     }
 
     void Update()
     {
-       if (finished == false)
+       if (finished == false && started == true)
         {
-            transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+            transform.position += Vector3.down * startingMoveSpeed * Time.deltaTime;
         }
 
        if (transform.position.y < deadZone)
@@ -43,6 +46,11 @@ public class EnemyHandController : MonoBehaviour
         }
     }
 
+    private void OnStartGame()
+    {
+        started = true;
+    }
+
     private void OnFinishGame()
     {
         finished = true;
@@ -51,6 +59,15 @@ public class EnemyHandController : MonoBehaviour
     private void OnResetGame()
     {
         Destroy(gameObject);
+        started = false;
+        finished = false;
+    }
+
+    private void FlipEnemyHand()
+    {
+        Vector3 newScale = gameObject.transform.localScale;
+        newScale.x *= -1;
+        gameObject.transform.localScale = newScale;
     }
     
 }
