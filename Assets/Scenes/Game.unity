@@ -1394,9 +1394,9 @@ MonoBehaviour:
   - {fileID: 1559880081907112243, guid: d1358e8f94f3c3e4a913cd8566281dee, type: 3}
   - {fileID: 7756636837403866226, guid: 2216319f9fae5584393748e134480c01, type: 3}
   - {fileID: 5378989858590302012, guid: 82b27bd3ab336cf4bb47744b5880ebf0, type: 3}
-  spawnRate: 5
-  maxLeftPosition: -2.85
-  maxRightPosition: 2.85
+  spawnRate: 2.5
+  maxLeftPosition: -1.85
+  maxRightPosition: 1.85
   minLeftPosition: -1.12
   minRightPosition: 1.12
 --- !u!4 &1443523161
@@ -2302,6 +2302,17 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1650688416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2608202384673262011, guid: 7467adfe0f7ee954caa7f5ac60ac70be, type: 3}
+  m_PrefabInstance: {fileID: 892868473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1672555085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2869,6 +2880,7 @@ MonoBehaviour:
   gameStartScreen: {fileID: 203915112}
   liveScore: {fileID: 1557053059}
   finalScore: {fileID: 998980644}
+  highScore: {fileID: 1650688416}
   scoreMultiplier: 0.01
 --- !u!1001 &4026296888019240731
 PrefabInstance:
