@@ -5,6 +5,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public GameObject gameOverMenu;
+    public GameObject gameStartScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class Manager : MonoBehaviour
     private void OnStartGame()
     {
         Debug.Log("Game Started");
+        gameStartScreen.SetActive(false);
     }
 
     private void OnFinishGame()
