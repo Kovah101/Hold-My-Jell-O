@@ -132,13 +132,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 71830948}
+  - component: {fileID: 71830949}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &71830948
 Transform:
   m_ObjectHideFlags: 0
@@ -156,6 +157,18 @@ Transform:
   - {fileID: 1047888560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &71830949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71830947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084ea675101fffb44a630d8f7d30cb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &359840721
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +357,18 @@ PrefabInstance:
     - target: {fileID: 2220335338101634125, guid: a979079596832d4468065a0f28161d83, type: 3}
       propertyPath: m_text
       value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701636065127730627, guid: a979079596832d4468065a0f28161d83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 71830949}
+    - target: {fileID: 7701636065127730627, guid: a979079596832d4468065a0f28161d83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701636065127730627, guid: a979079596832d4468065a0f28161d83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8324143581300403733, guid: a979079596832d4468065a0f28161d83, type: 3}
       propertyPath: m_Pivot.x
@@ -1322,6 +1347,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Again
       objectReference: {fileID: 0}
+    - target: {fileID: 7701636065127730627, guid: a979079596832d4468065a0f28161d83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 71830949}
+    - target: {fileID: 7701636065127730627, guid: a979079596832d4468065a0f28161d83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Again
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701636065127730627, guid: a979079596832d4468065a0f28161d83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8324143581300403733, guid: a979079596832d4468065a0f28161d83, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2180,6 +2217,7 @@ GameObject:
   - component: {fileID: 2032447628}
   - component: {fileID: 2032447627}
   - component: {fileID: 2032447629}
+  - component: {fileID: 2032447630}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2239,6 +2277,19 @@ MonoBehaviour:
   FinishGameEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2032447630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032447626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9cc99c54a4904f44b6d1ef1d9399b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverMenu: {fileID: 71830947}
 --- !u!1001 &4026296888019240731
 PrefabInstance:
   m_ObjectHideFlags: 0

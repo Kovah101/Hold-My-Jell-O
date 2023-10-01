@@ -83,7 +83,7 @@ public class PlayerInput : MonoBehaviour
     {
         //show high score and ui
         Debug.Log("Game Finished");
-        GameEventSystem.Instance.ResetGameEvent.Invoke();
+       // GameEventSystem.Instance.ResetGameEvent.Invoke();
     }
 
     private void OnResetGame()
