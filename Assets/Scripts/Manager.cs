@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class Manager : MonoBehaviour
     {
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
-        GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
 
     }
 
@@ -20,7 +20,6 @@ public class Manager : MonoBehaviour
     {
         GameEventSystem.Instance.StartGameEvent.RemoveListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.RemoveListener(OnFinishGame);
-        GameEventSystem.Instance.ResetGameEvent.RemoveListener(OnResetGame);
     }
 
     private void OnStartGame()
@@ -35,8 +34,9 @@ public class Manager : MonoBehaviour
         gameOverMenu.SetActive(true);
     }
 
-    private void OnResetGame()
+    public void ReturnToMenu()
     {
-        Debug.Log("Game Reset");
+        GameEventSystem.Instance.ResetGameEvent.Invoke();
+        SceneManager.LoadScene("MainMenu");
     }
 }
