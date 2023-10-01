@@ -819,8 +819,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 203915113}
   - {fileID: 458955596}
+  - {fileID: 203915113}
   m_Father: {fileID: 439839631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2721,7 +2721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 71830947}
-  gameStartScreen: {fileID: 439839630}
+  gameStartScreen: {fileID: 203915112}
 --- !u!1001 &4026296888019240731
 PrefabInstance:
   m_ObjectHideFlags: 0
