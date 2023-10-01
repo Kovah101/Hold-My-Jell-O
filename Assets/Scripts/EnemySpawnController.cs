@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawnController : MonoBehaviour
 {
     public GameObject[] enemyHands;
-    public float spawnRate = 7f;
+    public float spawnTimer = 7f;
     public float maxLeftPosition = -2.85f;
     public float maxRightPosition = 2.85f;
     public float minLeftPosition = -1.12f;
@@ -30,10 +30,9 @@ public class EnemySpawnController : MonoBehaviour
         GameEventSystem.Instance.ResetGameEvent.RemoveListener(OnResetGame);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (timer < spawnRate && started == true)
+        if (timer < spawnTimer && started == true)
         {
             timer += Time.deltaTime;
         }
@@ -50,7 +49,6 @@ public class EnemySpawnController : MonoBehaviour
 
         GameObject newHand = Instantiate(enemyHands[randomIndex], transform.position, Quaternion.identity);
         
-       // int randomFlip = Random.Range(0, 3);
         float xPosition;
 
         if (flipped == true)
