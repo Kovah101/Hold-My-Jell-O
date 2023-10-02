@@ -6,11 +6,15 @@ using UnityEngine;
 public class EnemySpawnController : MonoBehaviour
 {
     public GameObject[] enemyHands;
+    public GameObject[] enemyDoubleHands;
     public float spawnTimer = 7f;
     public float maxLeftPosition = -2.85f;
     public float maxRightPosition = 2.85f;
     public float minLeftPosition = -1.12f;
     public float minRightPosition = 1.12f;
+    public float minDoublePosition = -1.3f;
+    public float maxDoublePosition = 1.3f;
+    public int randomHands = 4;
 
     private bool started = false;
     private bool flipped = false;
@@ -38,7 +42,17 @@ public class EnemySpawnController : MonoBehaviour
         }
         else if ( started == true )
         {
-            SpawnHand(first: false);
+            int randomSpawn = Random.Range(0, randomHands);
+
+            if (randomSpawn <= 1)
+            {
+                SpawnHand(first: false);
+            } 
+            else
+            {
+                SpawnHands();
+            }
+
             timer = 0f;
         }
     }
@@ -84,6 +98,17 @@ public class EnemySpawnController : MonoBehaviour
             flipped = true;
         }
 
+    }
+
+    private void SpawnHands()
+    {
+        int randomIndex = Random.Range(0, enemyDoubleHands.Length);
+
+        GameObject newHand = Instantiate(enemyDoubleHands[randomIndex], transform.position, Quaternion.identity);
+
+        float xPosition = Random.Range(minDoublePosition, maxDoublePosition);
+
+        newHand.transform.position = new Vector3(xPosition, transform.position.y, 0);
     }
 
     private void OnStartGame()

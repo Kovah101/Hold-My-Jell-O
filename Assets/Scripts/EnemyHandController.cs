@@ -6,15 +6,26 @@ public class EnemyHandController : MonoBehaviour
 {
     public float startingMoveSpeed = 3.5f;
 
-   // private bool started = false;
+
     private bool finished = false;
     public float deadZone = -6.5f;
+    private AudioSource[] jellysplats;
+    private bool soundOn;
 
     void Start()
     {
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
+
+        jellysplats = GetComponents<AudioSource>();
+        soundOn = PlayerPrefs.GetInt("SoundOn") == 1 ? true : false;
+
+
+        foreach (var item in jellysplats)
+        {
+            item.mute = !soundOn;
+        }
 
     }
 
@@ -27,12 +38,12 @@ public class EnemyHandController : MonoBehaviour
 
     void Update()
     {
-       if (finished == false)
+        if (finished == false)
         {
             transform.position += Vector3.down * startingMoveSpeed * Time.deltaTime;
         }
 
-       if (transform.position.y < deadZone)
+        if (transform.position.y < deadZone)
         {
             Destroy(gameObject);
         }
@@ -42,13 +53,14 @@ public class EnemyHandController : MonoBehaviour
     {
         if (collision.tag == "Jelly")
         {
+            jellysplats[Random.Range(0, jellysplats.Length)].Play();
+
             GameEventSystem.Instance.FinishGameEvent.Invoke();
         }
     }
 
     private void OnStartGame()
     {
-       // started = true;
     }
 
     private void OnFinishGame()
@@ -59,15 +71,7 @@ public class EnemyHandController : MonoBehaviour
     private void OnResetGame()
     {
         Destroy(gameObject);
-       // started = false;
         finished = false;
     }
 
-    private void FlipEnemyHand()
-    {
-        Vector3 newScale = gameObject.transform.localScale;
-        newScale.x *= -1;
-        gameObject.transform.localScale = newScale;
-    }
-    
 }

@@ -8,7 +8,6 @@ public class JellyController : MonoBehaviour
 
     private GameObject jellyCenter;
 
-
     void Start()
     {
         jellyCenter = gameObject.transform.GetChild(0).gameObject;
@@ -34,7 +33,6 @@ public class JellyController : MonoBehaviour
 
     private void OnStartGame()
     {
-        Debug.Log("JellyController: OnStartGame");
         int jellyBoneCount = gameObject.transform.childCount;
         for (int i = 0; i < jellyBoneCount; i++)
         {

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - JellyCenter
   - Jelly
+  - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
