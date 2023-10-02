@@ -31,13 +31,8 @@ public class GameOverMenu : MonoBehaviour
     public void Again()
     {
         GameEventSystem.Instance.ResetGameEvent.Invoke();
+        gameObject.SetActive(false);
     }
-
-    //private void OnFinishGame()
-    //{
-    //    Debug.Log("Game Over - Show the menu");
-    //    gameObject.SetActive(true);
-    //}
 
     private void OnResetGame()
     {
