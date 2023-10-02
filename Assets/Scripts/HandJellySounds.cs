@@ -22,6 +22,7 @@ public class HandJellySounds : MonoBehaviour
         } 
         else if (gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Enemy Hand Hit Jelly");
             PlayJellySplat(collision);
         }
 
