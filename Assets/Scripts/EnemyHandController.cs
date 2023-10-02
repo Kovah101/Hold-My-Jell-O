@@ -7,7 +7,6 @@ public class EnemyHandController : MonoBehaviour
     public float startingMoveSpeed = 3.5f;
     
 
-    // private bool started = false;
     private bool finished = false;
     public float deadZone = -6.5f;
     private AudioSource[] jellysplats;
@@ -54,7 +53,6 @@ public class EnemyHandController : MonoBehaviour
 
     private void OnStartGame()
     {
-       // started = true;
     }
 
     private void OnFinishGame()
@@ -65,14 +63,7 @@ public class EnemyHandController : MonoBehaviour
     private void OnResetGame()
     {
         Destroy(gameObject);
-       // started = false;
         finished = false;
     }
 
-    private void FlipEnemyHand()
-    {
-        Vector3 newScale = gameObject.transform.localScale;
-        newScale.x *= -1;
-        gameObject.transform.localScale = newScale;
-    }
 }
