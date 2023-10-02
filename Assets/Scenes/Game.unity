@@ -3620,6 +3620,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1178360130}
     m_Modifications:
     - target: {fileID: 2495243472587104342, guid: 5a834f579d8ea0d4eb50d9ed81261b5d, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495243472587104342, guid: 5a834f579d8ea0d4eb50d9ed81261b5d, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -4123,6 +4127,10 @@ PrefabInstance:
     - target: {fileID: 7396892553978879499, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
       propertyPath: m_Name
       value: JellySplat1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838388411950306286, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9063839791793755082, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
       propertyPath: m_LocalPosition.x
