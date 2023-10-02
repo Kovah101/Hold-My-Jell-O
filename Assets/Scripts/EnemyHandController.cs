@@ -5,16 +5,20 @@ using UnityEngine;
 public class EnemyHandController : MonoBehaviour
 {
     public float startingMoveSpeed = 3.5f;
+    
 
-   // private bool started = false;
+    // private bool started = false;
     private bool finished = false;
     public float deadZone = -6.5f;
+    private AudioSource[] jellysplats;
 
     void Start()
     {
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
+
+        jellysplats = GetComponents<AudioSource>();
 
     }
 
@@ -42,6 +46,9 @@ public class EnemyHandController : MonoBehaviour
     {
         if (collision.tag == "Jelly")
         {
+            Debug.Log("Jelly Bone Hit Enemy");
+            jellysplats[Random.Range(0, jellysplats.Length)].Play();
+
             GameEventSystem.Instance.FinishGameEvent.Invoke();
         }
     }
@@ -69,5 +76,4 @@ public class EnemyHandController : MonoBehaviour
         newScale.x *= -1;
         gameObject.transform.localScale = newScale;
     }
-    
 }
