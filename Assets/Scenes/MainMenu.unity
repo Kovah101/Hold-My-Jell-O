@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 903776207}
   - component: {fileID: 903776206}
   m_Layer: 5
-  m_Name: VibrationOff
+  m_Name: MusicOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 963050801}
   - component: {fileID: 963050800}
   m_Layer: 5
-  m_Name: VibrationOn
+  m_Name: MusicOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2337,7 +2337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1083390877}
   m_Layer: 5
-  m_Name: VibrationControls
+  m_Name: MusicControls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3054,7 +3054,7 @@ GameObject:
   - component: {fileID: 1652439287}
   - component: {fileID: 1652439286}
   m_Layer: 5
-  m_Name: Vibration
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vibration
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebfb734888ab7354a953514bda0b38a8, type: 2}
   m_sharedMaterial: {fileID: 3917527618950026059, guid: ebfb734888ab7354a953514bda0b38a8, type: 2}

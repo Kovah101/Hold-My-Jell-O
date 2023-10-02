@@ -46,7 +46,6 @@ public class EnemyHandController : MonoBehaviour
     {
         if (collision.tag == "Jelly")
         {
-            Debug.Log("Jelly Bone Hit Enemy");
             jellysplats[Random.Range(0, jellysplats.Length)].Play();
 
             GameEventSystem.Instance.FinishGameEvent.Invoke();
