@@ -5,11 +5,8 @@ using UnityEngine;
 public class JellyController : MonoBehaviour
 {
     public float deadZone = -7.5f;
-    public AudioSource wallBounce;
 
     private GameObject jellyCenter;
-    private Collision2D lastCollision;
-
 
     void Start()
     {
@@ -36,7 +33,6 @@ public class JellyController : MonoBehaviour
 
     private void OnStartGame()
     {
-        Debug.Log("JellyController: OnStartGame");
         int jellyBoneCount = gameObject.transform.childCount;
         for (int i = 0; i < jellyBoneCount; i++)
         {
@@ -48,16 +44,5 @@ public class JellyController : MonoBehaviour
     private void OnFinishGame()
     {
         Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Jelly Collision!");
-
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            Debug.Log("JellyController: OnCollisionEnter2D: Wall");
-            wallBounce.Play();
-        }
     }
 }
