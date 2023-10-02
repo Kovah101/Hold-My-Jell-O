@@ -41,6 +41,7 @@ public class HandJellySounds : MonoBehaviour
     {
         if(timer < maxTimer)
         {
+
             timer += Time.deltaTime;
         }
     }

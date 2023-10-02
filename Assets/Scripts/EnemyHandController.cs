@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
 public class EnemyHandController : MonoBehaviour
 {
     public float startingMoveSpeed = 3.5f;
-
+    public float speedIncrease = 0.25f;
 
     private bool finished = false;
     public float deadZone = -6.5f;
@@ -80,7 +81,7 @@ public class EnemyHandController : MonoBehaviour
 
     private void IncreaseSpeed(int difficultyLevel)
     {
-        startingMoveSpeed += difficultyLevel * 0.5f;
+        startingMoveSpeed += difficultyLevel * speedIncrease;
     }
 
 }

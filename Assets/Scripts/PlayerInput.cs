@@ -16,9 +16,6 @@ public class PlayerInput : MonoBehaviour
     private Vector3 playerStartPosition = new Vector3(0.1f, -1f, 0f);
     private Vector3 jellyStartPosition = new Vector3(0f, 1f, 0f);
 
-    // TODO : Add enemy hand prefabs, move them along the screen, add collision with triggers - if touching the jelly then finish game, destroy hands and reset
-    // TODO : add enemy hand spawn patterns and increasing difficulty timers
-
 
     void Start()
     {

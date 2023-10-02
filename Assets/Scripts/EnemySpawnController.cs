@@ -7,7 +7,8 @@ public class EnemySpawnController : MonoBehaviour
 {
     public GameObject[] enemyHands;
     public GameObject[] enemyDoubleHands;
-    public float spawnTimer = 7f;
+    public float spawnTimer = 3f;
+    public float spawnTimerDecrement = 0.25f;
     public float maxLeftPosition = -2.85f;
     public float maxRightPosition = 2.85f;
     public float minLeftPosition = -1.12f;
@@ -25,6 +26,8 @@ public class EnemySpawnController : MonoBehaviour
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
+        GameEventSystem.Instance.IncreaseSpawnPattern.AddListener(IncreaseSpawnPattern);
+        GameEventSystem.Instance.DecreaseSpawnTimer.AddListener(DecreaseSpawnTimer);
     }
 
     private void OnDisable()
@@ -32,6 +35,8 @@ public class EnemySpawnController : MonoBehaviour
         GameEventSystem.Instance.StartGameEvent.RemoveListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.RemoveListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.RemoveListener(OnResetGame);
+        GameEventSystem.Instance.IncreaseSpawnPattern.RemoveListener(IncreaseSpawnPattern);
+        GameEventSystem.Instance.DecreaseSpawnTimer.RemoveListener(DecreaseSpawnTimer);
     }
 
     void Update()
@@ -130,11 +135,13 @@ public class EnemySpawnController : MonoBehaviour
 
     private void IncreaseSpawnPattern()
     {
+        Debug.Log("Increase Spawn Pattern - more doubles should appear");
         randomHands++;
     }
 
     private void DecreaseSpawnTimer()
     {
-        spawnTimer -= 0.5f;
+        Debug.Log("Decrease Spawn Timer - should spawn more often");
+        spawnTimer -= spawnTimerDecrement;
     }
 }
