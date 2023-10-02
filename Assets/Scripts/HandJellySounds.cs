@@ -8,6 +8,18 @@ public class HandJellySounds : MonoBehaviour
 
     private float timer = 0f;
     private float maxTimer = 1.5f;
+    private bool soundOn;
+
+    private void Start()
+    {
+        soundOn = PlayerPrefs.GetInt("SoundOn") == 1 ? true : false;
+
+        foreach (var item in jellysplats)
+        {
+            item.mute = !soundOn;
+        }
+
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
            if(timer > maxTimer)

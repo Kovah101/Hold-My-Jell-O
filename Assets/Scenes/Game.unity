@@ -517,7 +517,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361313400}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d35c258de03d1df4dbc4be1eaf034703, type: 3}
@@ -3591,6 +3591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 71830947}
   gameStartScreen: {fileID: 203915112}
+  backgroundMsuic: {fileID: 292054231}
   liveScore: {fileID: 1557053059}
   finalScore: {fileID: 998980644}
   highScore: {fileID: 1650688416}

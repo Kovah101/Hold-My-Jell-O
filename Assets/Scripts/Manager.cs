@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject gameStartScreen;
+    public GameObject backgroundMsuic;
     public TMP_Text liveScore;
     public TMP_Text finalScore;
     public TMP_Text highScore;
@@ -19,13 +20,18 @@ public class Manager : MonoBehaviour
     private double currentTime;
     private double score;
     private float currentHighScore;
+    private bool musicOn = true;
 
     void Start()
     {
-        currentHighScore = PlayerPrefs.GetFloat("HighScore", 0);
         GameEventSystem.Instance.StartGameEvent.AddListener(OnStartGame);
         GameEventSystem.Instance.FinishGameEvent.AddListener(OnFinishGame);
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
+
+        currentHighScore = PlayerPrefs.GetFloat("HighScore", 0);
+        musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+
+        backgroundMsuic.GetComponent<AudioSource>().mute = !musicOn;
 
     }
 
