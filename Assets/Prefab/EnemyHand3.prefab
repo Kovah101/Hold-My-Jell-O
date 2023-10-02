@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2998983056909938883}
   - component: {fileID: 8806159070645912072}
   - component: {fileID: 6058936930570635104}
+  - component: {fileID: 4305830246948246754}
   m_Layer: 0
   m_Name: EnemyHand3
   m_TagString: Untagged
@@ -182,3 +183,18 @@ PolygonCollider2D:
       - {x: 1.68, y: -0.39}
       - {x: 1.68, y: 0.04}
   m_UseDelaunayMesh: 0
+--- !u!114 &4305830246948246754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378989858590302012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90eb954c8b1d0743852398f167538cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jellysplats:
+  - {fileID: 7838388411950306286, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
+  - {fileID: 2495243472587104342, guid: 5a834f579d8ea0d4eb50d9ed81261b5d, type: 3}
