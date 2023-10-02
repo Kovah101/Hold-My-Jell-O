@@ -60,7 +60,7 @@ public class EnemyHandController : MonoBehaviour
         {
             jellysplats[Random.Range(0, jellysplats.Length)].Play();
 
-            //GameEventSystem.Instance.FinishGameEvent.Invoke();
+            GameEventSystem.Instance.FinishGameEvent.Invoke();
         }
     }
 

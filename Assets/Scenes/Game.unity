@@ -3610,7 +3610,7 @@ MonoBehaviour:
   finalScore: {fileID: 998980644}
   highScore: {fileID: 1650688416}
   scoreMultiplier: 0.01
-  difficultyBarrier: 100
+  difficultyBarrier: 75
 --- !u!1001 &2123754582800200556
 PrefabInstance:
   m_ObjectHideFlags: 0
