@@ -127,4 +127,14 @@ public class EnemySpawnController : MonoBehaviour
         started = false;
         timer = 0f;
     }
+
+    private void IncreaseSpawnPattern()
+    {
+        randomHands++;
+    }
+
+    private void DecreaseSpawnTimer()
+    {
+        spawnTimer -= 0.5f;
+    }
 }
