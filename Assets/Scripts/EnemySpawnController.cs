@@ -28,6 +28,10 @@ public class EnemySpawnController : MonoBehaviour
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
         GameEventSystem.Instance.IncreaseSpawnPattern.AddListener(IncreaseSpawnPattern);
         GameEventSystem.Instance.DecreaseSpawnTimer.AddListener(DecreaseSpawnTimer);
+
+        spawnTimer = PlayerPrefs.GetFloat("StartingSpawnTimer", 3f);
+        spawnTimerDecrement = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.25f);
+        randomHands = PlayerPrefs.GetInt("SpawnPatternIncrement", 4);
     }
 
     private void OnDisable()

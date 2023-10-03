@@ -95,7 +95,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetTimerDifficulty(float value)
     {
-        Debug.Log("Setting Timer Difficulty: " + value);
         timerDifficultyValue = (int)value;
         timerDifficultyText.text = timerDifficultyValue.ToString();
         timerDifficulty.value = timerDifficultyValue;
@@ -105,7 +104,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetSpawnDifficulty(float value)
     {
-        Debug.Log("Setting Spawn Difficulty: " + value);
         spawnDifficultyValue = (int)value;
         spawnDifficultyText.text = spawnDifficultyValue.ToString();
         spawnDifficulty.value = spawnDifficultyValue;
@@ -115,7 +113,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetStartingSpeed(float value)
     {
-        Debug.Log("Setting Starting Speed: " + value);
         startingSpeedValue = value;
         startingSpeedText.text = startingSpeedValue.ToString("F2");
         startingSpeed.value = startingSpeedValue;
@@ -125,7 +122,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetSpeedIncrement(float value)
     {
-        Debug.Log("Setting Speed Increment: " + value);
         speedIncrementValue = value;
         speedIncrementText.text = speedIncrementValue.ToString("F2");
         speedIncrement.value = speedIncrementValue;
@@ -135,7 +131,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetStartingSpawnTimer(float value)
     {
-        Debug.Log("Setting Starting Spawn Timer: " + value);
         startingSpawnTimerValue = value;
         startingSpawnTimerText.text = startingSpawnTimerValue.ToString("F2");
         startingSpawnTimer.value = startingSpawnTimerValue;
@@ -145,7 +140,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetSpawnTimerDecrement(float value)
     {
-        Debug.Log("Setting Spawn Timer Decrement: " + value);
         spawnTimerDecrementValue = value;
         spawnTimerDecrementText.text = spawnTimerDecrementValue.ToString("F2");
         spawnTimerDecrement.value = spawnTimerDecrementValue;
@@ -155,7 +149,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetSpawnPatternIncrement(float value)
     {
-        Debug.Log("Setting Spawn Pattern Increment: " + value);
         spawnPatternIncrementValue = (int)value;
         spawnPatternIncrementText.text = spawnPatternIncrementValue.ToString();
         spawnPatternIncrement.value = spawnPatternIncrementValue;
@@ -165,7 +158,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetInvincibility(bool value)
     {
-        Debug.Log("Setting Invincibility: " + value);
         invincibilityValue = value;
         invincibility.isOn = invincibilityValue;
         invincibilityText.text = invincibilityValue.ToString();

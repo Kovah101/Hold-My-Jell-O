@@ -13,6 +13,7 @@ public class EnemyHandController : MonoBehaviour
     private AudioSource[] jellysplats;
     private bool soundOn;
     private int difficultyLevel = 0;
+    private bool playerInvicible = false;
 
     void Start()
     {
@@ -28,6 +29,10 @@ public class EnemyHandController : MonoBehaviour
         {
             item.mute = !soundOn;
         }
+
+        startingMoveSpeed = PlayerPrefs.GetFloat("StartingSpeed", 1.75f);
+        speedIncrease = PlayerPrefs.GetFloat("SpeedIncrement", 0.25f);
+        playerInvicible = PlayerPrefs.GetInt("Invincibility") == 1 ? true : false;
 
         difficultyLevel = PlayerPrefs.GetInt("DifficultyLevel", 0);
         IncreaseSpeed(difficultyLevel);
@@ -60,7 +65,10 @@ public class EnemyHandController : MonoBehaviour
         {
             jellysplats[Random.Range(0, jellysplats.Length)].Play();
 
-            GameEventSystem.Instance.FinishGameEvent.Invoke();
+            if(playerInvicible == false)
+            {
+                GameEventSystem.Instance.FinishGameEvent.Invoke();
+            }
         }
     }
 

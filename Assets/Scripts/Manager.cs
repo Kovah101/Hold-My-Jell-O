@@ -21,6 +21,9 @@ public class Manager : MonoBehaviour
     private double score;
     private float currentHighScore;
     private double difficultyLevel = 0.0;
+    private int speedDifficulty;
+    private int spawnTimeDifficulty;
+    private int spawnPatternDifficulty;
 
     void Start()
     {
@@ -29,6 +32,10 @@ public class Manager : MonoBehaviour
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
 
         currentHighScore = PlayerPrefs.GetFloat("HighScore", 0);
+        difficultyBarrier = PlayerPrefs.GetFloat("ScoreDifficulty", 120);
+        speedDifficulty = PlayerPrefs.GetInt("SpeedDifficulty", 2);
+        spawnTimeDifficulty = PlayerPrefs.GetInt("TimerDifficulty", 3);
+        spawnPatternDifficulty = PlayerPrefs.GetInt("SpawnDifficulty", 5);
 
     }
 
@@ -93,20 +100,20 @@ public class Manager : MonoBehaviour
             return;
         }
 
-        if (difficultyLevel % 2 == 0)
+        if (difficultyLevel % speedDifficulty == 0)
         {
             Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing Speed");
             PlayerPrefs.SetInt("DifficultyLevel", (int)difficultyLevel);
             PlayerPrefs.Save();
         }
 
-        if (difficultyLevel % 3 == 0)
+        if (difficultyLevel % spawnTimeDifficulty == 0)
         {
             Debug.Log("Difficulty Level: " + difficultyLevel + ", Decreasing SpawnTime");
             GameEventSystem.Instance.DecreaseSpawnTimer.Invoke();
         }
 
-        if (difficultyLevel % 5 == 0)
+        if (difficultyLevel % spawnPatternDifficulty == 0)
         {
             Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing SpawnPattern");
             GameEventSystem.Instance.IncreaseSpawnPattern.Invoke();
