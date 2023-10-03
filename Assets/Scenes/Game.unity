@@ -294,7 +294,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -870,7 +870,7 @@ Transform:
   m_GameObject: {fileID: 439839630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6808333, y: 2.9174519, z: 0}
+  m_LocalPosition: {x: 1.6808333, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1855,11 +1855,19 @@ MonoBehaviour:
   - {fileID: 1559880081907112243, guid: d1358e8f94f3c3e4a913cd8566281dee, type: 3}
   - {fileID: 7756636837403866226, guid: 2216319f9fae5584393748e134480c01, type: 3}
   - {fileID: 5378989858590302012, guid: 82b27bd3ab336cf4bb47744b5880ebf0, type: 3}
-  spawnTimer: 2
+  enemyDoubleHands:
+  - {fileID: 1199254990999459323, guid: 7d40f05a6a948fb499627b7c15a8a523, type: 3}
+  - {fileID: 4775943565156617703, guid: 7b523f97ce1f27d4ca26ce9645d81dfe, type: 3}
+  - {fileID: 8176371238088831763, guid: d0e2a289409389148950003b1602a0a0, type: 3}
+  spawnTimer: 2.25
+  spawnTimerDecrement: 0.25
   maxLeftPosition: -1.85
   maxRightPosition: 1.85
   minLeftPosition: -1.12
   minRightPosition: 1.12
+  minDoublePosition: -1.3
+  maxDoublePosition: 1.3
+  randomHands: 4
 --- !u!4 &1443523161
 Transform:
   m_ObjectHideFlags: 0
@@ -3577,6 +3585,12 @@ MonoBehaviour:
   FinishGameEvent:
     m_PersistentCalls:
       m_Calls: []
+  DecreaseSpawnTimer:
+    m_PersistentCalls:
+      m_Calls: []
+  IncreaseSpawnPattern:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2032447630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3596,6 +3610,7 @@ MonoBehaviour:
   finalScore: {fileID: 998980644}
   highScore: {fileID: 1650688416}
   scoreMultiplier: 0.01
+  difficultyBarrier: 75
 --- !u!1001 &2123754582800200556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3604,6 +3619,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1178360130}
     m_Modifications:
+    - target: {fileID: 2495243472587104342, guid: 5a834f579d8ea0d4eb50d9ed81261b5d, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2495243472587104342, guid: 5a834f579d8ea0d4eb50d9ed81261b5d, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -4108,6 +4127,10 @@ PrefabInstance:
     - target: {fileID: 7396892553978879499, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
       propertyPath: m_Name
       value: JellySplat1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838388411950306286, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9063839791793755082, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
       propertyPath: m_LocalPosition.x

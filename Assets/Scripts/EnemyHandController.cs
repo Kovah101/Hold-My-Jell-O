@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
 public class EnemyHandController : MonoBehaviour
 {
     public float startingMoveSpeed = 3.5f;
-
+    public float speedIncrease = 0.25f;
 
     private bool finished = false;
     public float deadZone = -6.5f;
     private AudioSource[] jellysplats;
     private bool soundOn;
+    private int difficultyLevel = 0;
 
     void Start()
     {
@@ -26,6 +28,9 @@ public class EnemyHandController : MonoBehaviour
         {
             item.mute = !soundOn;
         }
+
+        difficultyLevel = PlayerPrefs.GetInt("DifficultyLevel", 0);
+        IncreaseSpeed(difficultyLevel);
 
     }
 
@@ -72,6 +77,11 @@ public class EnemyHandController : MonoBehaviour
     {
         Destroy(gameObject);
         finished = false;
+    }
+
+    private void IncreaseSpeed(int difficultyLevel)
+    {
+        startingMoveSpeed += difficultyLevel * speedIncrease;
     }
 
 }

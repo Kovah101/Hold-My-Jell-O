@@ -41,7 +41,6 @@ public class MainMenu : MonoBehaviour
         MusicOn.GetComponent<CanvasGroup>().alpha = musicOn ? 1f : 0.5f;
         MusicOff.GetComponent<CanvasGroup>().alpha = musicOn ? 0.5f : 1f;
 
-        //TODO add code to mut or unmute backgroundMusic
         BackgroundMusic.GetComponent<AudioSource>().mute = !musicOn;
 
         PlayerPrefs.SetInt("MusicOn", musicOn ? 1 : 0);
@@ -53,7 +52,6 @@ public class MainMenu : MonoBehaviour
         SoundOn.GetComponent<CanvasGroup>().alpha = soundOn ? 1f : 0.5f;
         SoundOff.GetComponent<CanvasGroup>().alpha = soundOn ? 0.5f : 1f;
 
-        //TODO add code to mut or unmute sound effects
         ButtonClickSound.GetComponent<AudioSource>().mute = !soundOn;
 
         PlayerPrefs.SetInt("SoundOn", soundOn ? 1 : 0);

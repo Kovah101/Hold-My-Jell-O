@@ -191,10 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94331b68c7e3837418198f14fb632fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMoveSpeed: 2
-  jellysplats:
-  - {fileID: 2495243472587104342, guid: 5a834f579d8ea0d4eb50d9ed81261b5d, type: 3}
-  - {fileID: 7838388411950306286, guid: 00a330bbb528cf9439666a76f433b585, type: 3}
+  startingMoveSpeed: 1.75
+  speedIncrease: 0.25
   deadZone: -6.5
 --- !u!82 &2769247491167484538
 AudioSource:

@@ -8,6 +8,8 @@ public class GameEventSystem : MonoBehaviour
     public BasicGameEvent StartGameEvent = new BasicGameEvent();
     public BasicGameEvent ResetGameEvent = new BasicGameEvent();
     public BasicGameEvent FinishGameEvent = new BasicGameEvent();
+    public BasicGameEvent DecreaseSpawnTimer = new BasicGameEvent();
+    public BasicGameEvent IncreaseSpawnPattern = new BasicGameEvent();
 
     private void Awake()
     {

@@ -19,7 +19,6 @@ public class WallBounce : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Jelly"))
         {
-            Debug.Log("Jelly Bone Hit Wall");
             wallBounce.Play();           
         }
     }

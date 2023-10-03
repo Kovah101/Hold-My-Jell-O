@@ -14,6 +14,7 @@ public class Manager : MonoBehaviour
     public TMP_Text finalScore;
     public TMP_Text highScore;
     public double scoreMultiplier = 1;
+    public double difficultyBarrier = 120;
 
     private bool started = false;
     private double startTime;
@@ -21,6 +22,7 @@ public class Manager : MonoBehaviour
     private double score;
     private float currentHighScore;
     private bool musicOn = true;
+    private double difficultyLevel = 0.0;
 
     void Start()
     {
@@ -49,6 +51,10 @@ public class Manager : MonoBehaviour
             currentTime = System.Environment.TickCount;
             score = (currentTime - startTime) * scoreMultiplier;
             liveScore.text = score.ToString("F0");
+
+            difficultyLevel = score / difficultyBarrier;
+            IncreaseDifficulty(difficultyLevel);
+
         }
     }
 
@@ -84,4 +90,31 @@ public class Manager : MonoBehaviour
         GameEventSystem.Instance.ResetGameEvent.Invoke();
         SceneManager.LoadScene("MainMenu");
     }
+
+    private void IncreaseDifficulty(double difficultyLevel)
+    {
+        if (difficultyLevel < 1)
+        {
+            return;
+        }
+
+        if (difficultyLevel % 2 == 0)
+        {
+            Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing Speed");
+            PlayerPrefs.SetInt("DifficultyLevel", (int)difficultyLevel);
+            PlayerPrefs.Save();
+        }
+
+        if (difficultyLevel % 3 == 0)
+        {
+            Debug.Log("Difficulty Level: " + difficultyLevel + ", Decreasing SpawnTime");
+            GameEventSystem.Instance.DecreaseSpawnTimer.Invoke();
+        }
+
+        if (difficultyLevel % 5 == 0)
+        {
+            Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing SpawnPattern");
+            GameEventSystem.Instance.IncreaseSpawnPattern.Invoke();
+        }
+    }   
 }
