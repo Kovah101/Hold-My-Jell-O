@@ -26,6 +26,8 @@ public class TestVariableController : MonoBehaviour
     public TMP_Text spawnPatternIncrementText;
     public Toggle invincibility;
     public TMP_Text invincibilityText;
+    public Toggle variablesUi;
+    public TMP_Text variablesUiText;
 
     private int scoreDifficultyValue;
     private int speedDifficultyValue;
@@ -37,6 +39,7 @@ public class TestVariableController : MonoBehaviour
     private float spawnTimerDecrementValue;
     private int spawnPatternIncrementValue;
     private bool invincibilityValue;
+    private bool variablesUiValue;
 
 
     // Start is called before the first frame update
@@ -71,6 +74,10 @@ public class TestVariableController : MonoBehaviour
 
         invincibilityValue = PlayerPrefs.GetInt("Invincibility", 0) == 1 ? true : false;
         SetInvincibility(invincibilityValue);
+
+        variablesUiValue = PlayerPrefs.GetInt("VariablesUi", 0) == 1 ? true : false;
+        SetVariablesUi(variablesUiValue);
+
     }
 
     public void SetScoreDifficulty(float value)
@@ -162,6 +169,15 @@ public class TestVariableController : MonoBehaviour
         invincibility.isOn = invincibilityValue;
         invincibilityText.text = invincibilityValue.ToString();
         PlayerPrefs.SetInt("Invincibility", invincibilityValue ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    public void SetVariablesUi(bool value)
+    {
+        variablesUiValue = value;
+        variablesUi.isOn = variablesUiValue;
+        variablesUiText.text = variablesUiValue.ToString();
+        PlayerPrefs.SetInt("VariablesUi", variablesUiValue ? 1 : 0);
         PlayerPrefs.Save();
     }
 }
