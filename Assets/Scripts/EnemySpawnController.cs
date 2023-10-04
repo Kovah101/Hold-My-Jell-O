@@ -51,14 +51,14 @@ public class EnemySpawnController : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        else if ( started == true )
+        else if (started == true)
         {
             int randomSpawn = Random.Range(0, randomHands);
 
             if (randomSpawn <= 1)
             {
                 SpawnHand(first: false);
-            } 
+            }
             else
             {
                 SpawnHands();
@@ -73,7 +73,7 @@ public class EnemySpawnController : MonoBehaviour
         int randomIndex = Random.Range(0, enemyHands.Length);
 
         GameObject newHand = Instantiate(enemyHands[randomIndex], transform.position, Quaternion.identity);
-        
+
         float xPosition;
 
         if (flipped == true)
@@ -82,10 +82,10 @@ public class EnemySpawnController : MonoBehaviour
             newScale.x *= -1;
             newHand.transform.localScale = newScale;
 
-            if(first)
+            if (first)
             {
                 xPosition = minLeftPosition;
-            } 
+            }
             else
             {
                 xPosition = Random.Range(minLeftPosition, maxLeftPosition);
@@ -96,7 +96,7 @@ public class EnemySpawnController : MonoBehaviour
         }
         else
         {
-            if(first)
+            if (first)
             {
                 xPosition = minRightPosition;
             }
@@ -141,18 +141,16 @@ public class EnemySpawnController : MonoBehaviour
 
     private void IncreaseSpawnPattern()
     {
-        Debug.Log("Increase Spawn Pattern - more doubles should appear");
         randomHands++;
     }
 
     private void DecreaseSpawnTimer()
     {
-        if(spawnTimer <= minSpawnTimer)
+        if (spawnTimer <= minSpawnTimer)
         {
             return;
         }
 
-        Debug.Log("Decrease Spawn Timer - should spawn more often");
         spawnTimer -= spawnTimerDecrement;
         GameEventSystem.Instance.UpdateSpawnTimer.Invoke(spawnTimer);
     }

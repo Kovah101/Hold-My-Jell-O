@@ -29,6 +29,7 @@ public class Manager : MonoBehaviour
     private int spawnPatternDifficulty;
     private float startingSpeed;
     private bool showVariablesUi = false;
+    private bool invicible;
 
     void Start()
     {
@@ -42,19 +43,12 @@ public class Manager : MonoBehaviour
         spawnTimeDifficulty = PlayerPrefs.GetInt("TimerDifficulty", 3);
         spawnPatternDifficulty = PlayerPrefs.GetInt("SpawnDifficulty", 5);
         startingSpeed = PlayerPrefs.GetFloat("StartingSpeed", 1.75f);
+        invicible = PlayerPrefs.GetInt("Invincibility", 0) == 1 ? true : false;
 
         difficultyLevel = 0;
         PlayerPrefs.SetInt("DifficultyLevel", difficultyLevel);
         PlayerPrefs.Save();
         GameEventSystem.Instance.UpdateDifficulty.Invoke(difficultyLevel);
-
-        // log all the set values
-      //  Debug.Log("High Score: " + currentHighScore);
-      //  Debug.Log("Score Difficulty: " + difficultyBarrier);
-      //  Debug.Log("Speed Difficulty: " + speedDifficulty);
-        Debug.Log("Spawn Time Difficulty: " + spawnTimeDifficulty);
-    //    Debug.Log("Starting Speed: " + startingSpeed);
-
         GameEventSystem.Instance.UpdateEnemySpeed.Invoke(startingSpeed);
 
 
@@ -101,7 +95,7 @@ public class Manager : MonoBehaviour
         started = false;
         gameOverMenu.SetActive(true);
         finalScore.text = "Score: " + score.ToString("F0");
-        if (score > currentHighScore)
+        if (score > currentHighScore && !invicible)
         {
             currentHighScore = (float)score;
             PlayerPrefs.SetFloat("HighScore", (float)score);
@@ -133,23 +127,20 @@ public class Manager : MonoBehaviour
             return;
         }
 
-        //if (difficultyLevel % speedDifficulty == 0)
-        //{
-        //    Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing Speed");
-        //    PlayerPrefs.SetInt("DifficultyLevel", difficultyLevel);
-        //    PlayerPrefs.Save();
-        //}
+        if (difficultyLevel % speedDifficulty == 0)
+        {
+            PlayerPrefs.SetInt("DifficultyLevel", difficultyLevel);
+            PlayerPrefs.Save();
+        }
 
         if (difficultyLevel % spawnTimeDifficulty == 0)
         {
-            Debug.Log("Difficulty Level: " + difficultyLevel + ", Decreasing SpawnTime");
             GameEventSystem.Instance.DecreaseSpawnTimer.Invoke();
         }
 
-        //if (difficultyLevel % spawnPatternDifficulty == 0)
-        //{
-        //    Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing SpawnPattern");
-        //    GameEventSystem.Instance.IncreaseSpawnPattern.Invoke();
-        //}
+        if (difficultyLevel % spawnPatternDifficulty == 0)
+        {
+            GameEventSystem.Instance.IncreaseSpawnPattern.Invoke();
+        }
     }
 }
