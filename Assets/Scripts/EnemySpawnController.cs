@@ -20,6 +20,7 @@ public class EnemySpawnController : MonoBehaviour
     private bool started = false;
     private bool flipped = false;
     private float timer = 0f;
+    private float minSpawnTimer = 1f;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class EnemySpawnController : MonoBehaviour
         spawnTimer = PlayerPrefs.GetFloat("StartingSpawnTimer", 3f);
         spawnTimerDecrement = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.25f);
         randomHands = PlayerPrefs.GetInt("SpawnPatternIncrement", 4);
+        GameEventSystem.Instance.UpdateSpawnTimer.Invoke(spawnTimer);
     }
 
     private void OnDisable()
@@ -145,7 +147,13 @@ public class EnemySpawnController : MonoBehaviour
 
     private void DecreaseSpawnTimer()
     {
+        if(spawnTimer <= minSpawnTimer)
+        {
+            return;
+        }
+
         Debug.Log("Decrease Spawn Timer - should spawn more often");
         spawnTimer -= spawnTimerDecrement;
+        GameEventSystem.Instance.UpdateSpawnTimer.Invoke(spawnTimer);
     }
 }

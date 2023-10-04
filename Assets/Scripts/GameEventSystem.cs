@@ -10,6 +10,9 @@ public class GameEventSystem : MonoBehaviour
     public BasicGameEvent FinishGameEvent = new BasicGameEvent();
     public BasicGameEvent DecreaseSpawnTimer = new BasicGameEvent();
     public BasicGameEvent IncreaseSpawnPattern = new BasicGameEvent();
+    public TestGameEvent UpdateDifficulty = new TestGameEvent();
+    public TestGameEvent UpdateEnemySpeed = new TestGameEvent();
+    public TestGameEvent UpdateSpawnTimer = new TestGameEvent();
 
     private void Awake()
     {
@@ -27,3 +30,4 @@ public class GameEventSystem : MonoBehaviour
 
 [System.Serializable]
 public class BasicGameEvent : UnityEvent { }
+public class TestGameEvent: UnityEvent<float> { }

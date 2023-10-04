@@ -90,6 +90,7 @@ public class EnemyHandController : MonoBehaviour
     private void IncreaseSpeed(int difficultyLevel)
     {
         startingMoveSpeed += difficultyLevel * speedIncrease;
+        GameEventSystem.Instance.UpdateEnemySpeed.Invoke(startingMoveSpeed);
     }
 
 }

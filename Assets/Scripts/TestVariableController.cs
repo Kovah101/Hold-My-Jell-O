@@ -82,7 +82,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetScoreDifficulty(float value)
     {
-        Debug.Log("Setting Score Difficulty: " + value);
         scoreDifficultyValue = (int)value;
         scoreDifficultyText.text = scoreDifficultyValue.ToString();
         scoreDifficulty.value = scoreDifficultyValue;
@@ -92,7 +91,6 @@ public class TestVariableController : MonoBehaviour
 
     public void SetSpeedDifficulty(float value)
     {
-        Debug.Log("Setting Speed Difficulty: " + value);
         speedDifficultyValue = (int)value;
         speedDifficultyText.text = speedDifficultyValue.ToString();
         speedDifficulty.value = speedDifficultyValue;

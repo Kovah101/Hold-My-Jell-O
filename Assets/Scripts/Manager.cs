@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -9,21 +10,25 @@ public class Manager : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject gameStartScreen;
+    public GameObject variablesUI;
     public TMP_Text liveScore;
     public TMP_Text finalScore;
     public TMP_Text highScore;
-    public double scoreMultiplier = 1;
-    public double difficultyBarrier = 120;
+    public float scoreMultiplier = 1f;
 
+    private float difficultyBarrier;
     private bool started = false;
-    private double startTime;
-    private double currentTime;
-    private double score;
+    private float startTime;
+    private float currentTime;
+    private float score;
     private float currentHighScore;
-    private double difficultyLevel = 0.0;
+    private int difficultyLevel = 0;
+    private int previousDifficultyLevel;
     private int speedDifficulty;
     private int spawnTimeDifficulty;
     private int spawnPatternDifficulty;
+    private float startingSpeed;
+    private bool showVariablesUi = false;
 
     void Start()
     {
@@ -32,10 +37,30 @@ public class Manager : MonoBehaviour
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
 
         currentHighScore = PlayerPrefs.GetFloat("HighScore", 0);
-        difficultyBarrier = PlayerPrefs.GetFloat("ScoreDifficulty", 120);
+        difficultyBarrier = PlayerPrefs.GetInt("ScoreDifficulty", 100);
         speedDifficulty = PlayerPrefs.GetInt("SpeedDifficulty", 2);
         spawnTimeDifficulty = PlayerPrefs.GetInt("TimerDifficulty", 3);
         spawnPatternDifficulty = PlayerPrefs.GetInt("SpawnDifficulty", 5);
+        startingSpeed = PlayerPrefs.GetFloat("StartingSpeed", 1.75f);
+
+        difficultyLevel = 0;
+        PlayerPrefs.SetInt("DifficultyLevel", difficultyLevel);
+        PlayerPrefs.Save();
+        GameEventSystem.Instance.UpdateDifficulty.Invoke(difficultyLevel);
+
+        // log all the set values
+      //  Debug.Log("High Score: " + currentHighScore);
+      //  Debug.Log("Score Difficulty: " + difficultyBarrier);
+      //  Debug.Log("Speed Difficulty: " + speedDifficulty);
+        Debug.Log("Spawn Time Difficulty: " + spawnTimeDifficulty);
+    //    Debug.Log("Starting Speed: " + startingSpeed);
+
+        GameEventSystem.Instance.UpdateEnemySpeed.Invoke(startingSpeed);
+
+
+        showVariablesUi = PlayerPrefs.GetInt("VariablesUi", 1) == 1 ? true : false;
+        variablesUI.SetActive(showVariablesUi);
+
 
     }
 
@@ -54,9 +79,13 @@ public class Manager : MonoBehaviour
             score = (currentTime - startTime) * scoreMultiplier;
             liveScore.text = score.ToString("F0");
 
-            difficultyLevel = score / difficultyBarrier;
-            IncreaseDifficulty(difficultyLevel);
-
+            difficultyLevel = (int)score / (int)difficultyBarrier;
+            GameEventSystem.Instance.UpdateDifficulty.Invoke(difficultyLevel);
+            if(difficultyLevel != previousDifficultyLevel)
+            {
+                IncreaseDifficulty(difficultyLevel);
+                previousDifficultyLevel = difficultyLevel;
+            }
         }
     }
 
@@ -84,7 +113,11 @@ public class Manager : MonoBehaviour
     private void OnResetGame()
     {
         liveScore.text = "0";
-        
+        difficultyLevel = 0;
+        previousDifficultyLevel = 0;
+        PlayerPrefs.SetInt("DifficultyLevel", difficultyLevel);
+        PlayerPrefs.Save();
+        GameEventSystem.Instance.UpdateDifficulty.Invoke(difficultyLevel);
     }
 
     public void ReturnToMenu()
@@ -93,19 +126,19 @@ public class Manager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void IncreaseDifficulty(double difficultyLevel)
+    private void IncreaseDifficulty(int difficultyLevel)
     {
         if (difficultyLevel < 1)
         {
             return;
         }
 
-        if (difficultyLevel % speedDifficulty == 0)
-        {
-            Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing Speed");
-            PlayerPrefs.SetInt("DifficultyLevel", (int)difficultyLevel);
-            PlayerPrefs.Save();
-        }
+        //if (difficultyLevel % speedDifficulty == 0)
+        //{
+        //    Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing Speed");
+        //    PlayerPrefs.SetInt("DifficultyLevel", difficultyLevel);
+        //    PlayerPrefs.Save();
+        //}
 
         if (difficultyLevel % spawnTimeDifficulty == 0)
         {
@@ -113,10 +146,10 @@ public class Manager : MonoBehaviour
             GameEventSystem.Instance.DecreaseSpawnTimer.Invoke();
         }
 
-        if (difficultyLevel % spawnPatternDifficulty == 0)
-        {
-            Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing SpawnPattern");
-            GameEventSystem.Instance.IncreaseSpawnPattern.Invoke();
-        }
-    }   
+        //if (difficultyLevel % spawnPatternDifficulty == 0)
+        //{
+        //    Debug.Log("Difficulty Level: " + difficultyLevel + ", Increasing SpawnPattern");
+        //    GameEventSystem.Instance.IncreaseSpawnPattern.Invoke();
+        //}
+    }
 }
