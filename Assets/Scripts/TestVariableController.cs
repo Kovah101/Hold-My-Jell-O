@@ -62,7 +62,7 @@ public class TestVariableController : MonoBehaviour
         speedIncrementValue = PlayerPrefs.GetFloat("SpeedIncrement", 0.0f);
         SetSpeedIncrement(speedIncrementValue);
 
-        startingSpawnTimerValue = PlayerPrefs.GetFloat("StartingSpawnTimer", 1.95f);
+        startingSpawnTimerValue = PlayerPrefs.GetFloat("StartingSpawnTimer", 2.10f);
         SetStartingSpawnTimer(startingSpawnTimerValue);
 
         spawnTimerDecrementValue = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.05f);
