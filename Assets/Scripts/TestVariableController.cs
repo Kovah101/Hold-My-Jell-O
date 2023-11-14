@@ -42,31 +42,30 @@ public class TestVariableController : MonoBehaviour
     private bool variablesUiValue;
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        scoreDifficultyValue = PlayerPrefs.GetInt("ScoreDifficulty", 100);
+        scoreDifficultyValue = PlayerPrefs.GetInt("ScoreDifficulty", 75);
         SetScoreDifficulty((float)scoreDifficultyValue);
         
-        speedDifficultyValue = PlayerPrefs.GetInt("SpeedDifficulty", 2);
+        speedDifficultyValue = PlayerPrefs.GetInt("SpeedDifficulty", 1);
         SetSpeedDifficulty((float)speedDifficultyValue);
 
-        timerDifficultyValue = PlayerPrefs.GetInt("TimerDifficulty", 3);
+        timerDifficultyValue = PlayerPrefs.GetInt("TimerDifficulty", 1);
         SetTimerDifficulty((float)timerDifficultyValue);
 
-        spawnDifficultyValue = PlayerPrefs.GetInt("SpawnDifficulty", 5);
+        spawnDifficultyValue = PlayerPrefs.GetInt("SpawnDifficulty", 1);
         SetSpawnDifficulty((float)spawnDifficultyValue);
 
         startingSpeedValue = PlayerPrefs.GetFloat("StartingSpeed", 1.75f);
         SetStartingSpeed(startingSpeedValue);
 
-        speedIncrementValue = PlayerPrefs.GetFloat("SpeedIncrement", 0.25f);
+        speedIncrementValue = PlayerPrefs.GetFloat("SpeedIncrement", 0.0f);
         SetSpeedIncrement(speedIncrementValue);
 
-        startingSpawnTimerValue = PlayerPrefs.GetFloat("StartingSpawnTimer", 3f);
+        startingSpawnTimerValue = PlayerPrefs.GetFloat("StartingSpawnTimer", 1.95f);
         SetStartingSpawnTimer(startingSpawnTimerValue);
 
-        spawnTimerDecrementValue = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.25f);
+        spawnTimerDecrementValue = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.05f);
         SetSpawnTimerDecrement(spawnTimerDecrementValue);
 
         spawnPatternIncrementValue = PlayerPrefs.GetInt("SpawnPatternIncrement", 1);

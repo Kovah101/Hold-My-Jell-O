@@ -31,8 +31,8 @@ public class EnemyHandController : MonoBehaviour
         }
 
         startingMoveSpeed = PlayerPrefs.GetFloat("StartingSpeed", 1.75f);
-        speedIncrease = PlayerPrefs.GetFloat("SpeedIncrement", 0.25f);
-        playerInvicible = PlayerPrefs.GetInt("Invincibility") == 1 ? true : false;
+        speedIncrease = PlayerPrefs.GetFloat("SpeedIncrement", 0.0f);
+        playerInvicible = PlayerPrefs.GetInt("Invincibility", 0) == 1 ? true : false;
 
         difficultyLevel = PlayerPrefs.GetInt("DifficultyLevel", 0);
         IncreaseSpeed(difficultyLevel);

@@ -38,10 +38,10 @@ public class Manager : MonoBehaviour
         GameEventSystem.Instance.ResetGameEvent.AddListener(OnResetGame);
 
         currentHighScore = PlayerPrefs.GetFloat("HighScore", 0);
-        difficultyBarrier = PlayerPrefs.GetInt("ScoreDifficulty", 100);
-        speedDifficulty = PlayerPrefs.GetInt("SpeedDifficulty", 2);
-        spawnTimeDifficulty = PlayerPrefs.GetInt("TimerDifficulty", 3);
-        spawnPatternDifficulty = PlayerPrefs.GetInt("SpawnDifficulty", 5);
+        difficultyBarrier = PlayerPrefs.GetInt("ScoreDifficulty", 75);
+        speedDifficulty = PlayerPrefs.GetInt("SpeedDifficulty", 1);
+        spawnTimeDifficulty = PlayerPrefs.GetInt("TimerDifficulty", 1);
+        spawnPatternDifficulty = PlayerPrefs.GetInt("SpawnDifficulty", 1);
         startingSpeed = PlayerPrefs.GetFloat("StartingSpeed", 1.75f);
         invicible = PlayerPrefs.GetInt("Invincibility", 0) == 1 ? true : false;
 
@@ -52,7 +52,7 @@ public class Manager : MonoBehaviour
         GameEventSystem.Instance.UpdateEnemySpeed.Invoke(startingSpeed);
 
 
-        showVariablesUi = PlayerPrefs.GetInt("VariablesUi", 1) == 1 ? true : false;
+        showVariablesUi = PlayerPrefs.GetInt("VariablesUi", 0) == 1 ? true : false;
         variablesUI.SetActive(showVariablesUi);
 
 
