@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class MainMenu : MonoBehaviour
     public GameObject SoundOn;
     public GameObject SoundOff;
     public GameObject ButtonClickSound;
+    public TMP_Text HighScoreText;
 
 
     private bool musicOn = true;
     private bool soundOn = true;
+    private float highScore;
 
     private void Start()
     {
@@ -25,6 +28,9 @@ public class MainMenu : MonoBehaviour
 
         soundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
         ToggleSound(soundOn);
+
+        highScore = PlayerPrefs.GetFloat("HighScore", 0);
+        SetHighScoreUI(highScore);
     }
     public void PlayGame()
     {
@@ -56,5 +62,18 @@ public class MainMenu : MonoBehaviour
 
         PlayerPrefs.SetInt("SoundOn", soundOn ? 1 : 0);
         PlayerPrefs.Save();
+    }
+
+    public void SetHighScoreUI(float highScore)
+    {
+        HighScoreText.text = "High Score: " + highScore.ToString("0");
+    }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.SetFloat("HighScore", 0);
+        PlayerPrefs.Save();
+        highScore = 0;
+        SetHighScoreUI(highScore);
     }
 }
