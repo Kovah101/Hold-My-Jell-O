@@ -30,9 +30,10 @@ public class EnemySpawnController : MonoBehaviour
         GameEventSystem.Instance.IncreaseSpawnPattern.AddListener(IncreaseSpawnPattern);
         GameEventSystem.Instance.DecreaseSpawnTimer.AddListener(DecreaseSpawnTimer);
 
-        spawnTimer = PlayerPrefs.GetFloat("StartingSpawnTimer", 3f);
-        spawnTimerDecrement = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.25f);
-        randomHands = PlayerPrefs.GetInt("SpawnPatternIncrement", 4);
+        spawnTimer = PlayerPrefs.GetFloat("StartingSpawnTimer", 2.10f);
+        spawnTimerDecrement = PlayerPrefs.GetFloat("SpawnTimerDecrement", 0.05f);
+        randomHands = PlayerPrefs.GetInt("SpawnPatternIncrement", 1);
+
         GameEventSystem.Instance.UpdateSpawnTimer.Invoke(spawnTimer);
     }
 
